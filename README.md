@@ -14,7 +14,6 @@
 - 화면 미리보기 ( 화면을 클릭하면 배포한 사이트로 이동합니다 )
   - Light Mode
 [![light](./src/assets/light%20ver.png)](https://vue-project-vite.vercel.app/)
-
   - Dark Mode
 [![dark](./src/assets/dark%20ver.png)](https://vue-project-vite.vercel.app/)
 
