@@ -3,7 +3,7 @@ import Header from './Header.vue'
 import Footer from './Footer.vue'
 import { ref } from 'vue'
 
-const checked = ref(false)
+const checked = ref(false);
 </script>
 
 <template>

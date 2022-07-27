@@ -11,8 +11,9 @@ import NotFound from './NotFound.vue'
 export default createRouter({
   // history: createWebHashHistory(),
   history: createWebHistory(),
-  scrollBehavior() {
-    return { top: 0 }
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    else return { top: 0 }
   },
 
   routes: [
