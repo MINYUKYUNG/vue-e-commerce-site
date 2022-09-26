@@ -25,6 +25,7 @@ module.exports = {
     'vue/singleline-html-element-content-newline': "off",
     'vue/html-self-closing': "off",
     'vue/html-indent': "off",
-    'vue/no-v-for-template-key': "off"
+    'vue/no-v-for-template-key': "off",
+    "@typescript-eslint/no-extra-semi": "off",
   }
 }
