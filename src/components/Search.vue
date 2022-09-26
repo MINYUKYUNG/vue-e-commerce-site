@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useStore } from "vuex"
-import { proGuard } from '@store/goods'
+import { ref, computed } from 'vue';
+import { useStore } from "vuex";
+import { proGuard } from '../store/goods';
 
 let result = ref([]);
 let reset = ref('');

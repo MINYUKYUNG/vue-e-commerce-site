@@ -2,7 +2,7 @@
 import { Carousel, Slide, Pagination } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { ref } from 'vue';
-import { jeans, necklace, salad } from '@assets/images/index';
+import { jeans, necklace, salad } from '../assets/images/index';
 
 const images = ref([
   {

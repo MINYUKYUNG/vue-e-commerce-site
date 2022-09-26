@@ -2,15 +2,15 @@
 import { useStore } from "vuex";
 import { ref, computed } from 'vue';
 import YesCart from './components/YesCart.vue';
-import { productsApi } from '@apis/goodsApi';
+import { productsApi } from '../../apis/goodsApi';
+
+const store = useStore();
+const reLoad = ref(0);
 
 (async () => {
   await productsApi();
   store.commit('cart/loadCart');
 })();
-
-const store = useStore();
-const reLoad = ref(0);
 
 const all = computed(() => {
   return store.state.goods.all
