@@ -2,6 +2,8 @@
 
 ## 배포 링크
 https://vue-project-vite-ts.vercel.app/
+<br/>
+<br/>
 
 ## 기술 스택
 - Vue3 (Composition API) + Vite + TypeScript
@@ -9,6 +11,7 @@ https://vue-project-vite-ts.vercel.app/
 - Vuex
 - CSS Framwork: tailwindcss, daisyui
 - Axios API
+<br/>
 
 ## About project
 1. Vue.js 온라인 쇼핑몰 프로젝트
@@ -25,6 +28,7 @@ https://vue-project-vite-ts.vercel.app/
     [![light](./src/assets/images/light%20ver.png)](https://vue-project-vite-ts.vercel.app/)
     - Dark Mode
     [![dark](./src/assets/images/dark%20ver.png)](https://vue-project-vite-ts.vercel.app/)
+<br/>
 
 ## 실행 방법
 1. repository clone
@@ -39,6 +43,7 @@ npm install
 ```
 npm run dev
 ```
+<br/>
 
 ## 폴더 구조
 | 폴더 | 구분 |
@@ -49,3 +54,5 @@ npm run dev
 | pages | url 주소 페이지 파일 폴더 |
 | routes | Vue 라우팅 파일 폴더 |
 | store | 전역상태관리 파일 폴더 |
+
+
