@@ -1,6 +1,12 @@
-# vue-project-vite-ts
-- Vue3 (Composition API) + Vite + TS
-- Vuex + Vue Router
+# vue-e-commerce-site
+
+## 배포 링크
+https://vue-project-vite-ts.vercel.app/
+
+## 기술 스택
+- Vue3 (Composition API) + Vite + TypeScript
+- Vue Router
+- Vuex
 - CSS Framwork: tailwindcss, daisyui
 - Axios API
 
@@ -16,21 +22,30 @@
 
 3. 화면 미리보기 ( **화면을 클릭하면 배포한 사이트로 이동합니다** )
     - Light Mode
-    [![light](./src/assets/light%20ver.png)](https://vue-project-vite-ts.vercel.app/)
+    [![light](./src/assets/images/light%20ver.png)](https://vue-project-vite-ts.vercel.app/)
     - Dark Mode
-    [![dark](./src/assets/dark%20ver.png)](https://vue-project-vite-ts.vercel.app/)
+    [![dark](./src/assets/images/dark%20ver.png)](https://vue-project-vite-ts.vercel.app/)
 
-### Project setup
+## 실행 방법
+1. repository clone
+```
+$ git clone https://github.com/MINYUKYUNG/vue-e-commerce-site.git
+```
+2. dependencies install
 ```
 npm install
 ```
-
-### Project test
+3. project start
 ```
 npm run dev
 ```
 
-### Project build
-```
-npm run build
-```
+## 폴더 구조
+| 폴더 | 구분 |
+| -- | -- |
+| apis | api 호출 함수 폴더 |
+| assets | 이미지, 폰트 폴더 |
+| components | 공통 컴포넌트 파일 폴더 |
+| pages | url 주소 페이지 파일 폴더 |
+| routes | Vue 라우팅 파일 폴더 |
+| store | 전역상태관리 파일 폴더 |
