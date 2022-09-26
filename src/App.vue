@@ -1,20 +1,14 @@
 <script setup lang="ts">
-import HomePage from './components/HomePage.vue'
+import Layout from '@components/Layout.vue';
 import { useStore } from "vuex";
 
 const store = useStore();
 
-const getAPI = () => {
-  store.dispatch('goods/getData')
-}
-
-// created
-if (localStorage.getItem('cart_data') === null) {
-  localStorage.setItem('cart_data', JSON.stringify({}))
-}
-getAPI();
+if (localStorage.getItem('cart_data') === null) 
+  localStorage.setItem('cart_data', JSON.stringify({}));
+store.dispatch('goods/getProducts');
 </script>
 
 <template>
-  <HomePage />
+  <Layout />
 </template>
