@@ -1,19 +1,11 @@
-// import { createRouter, createWebHashHistory } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
-import Home from './Home.vue'
-import Product from './Product.vue'
-import Fashion from './Fashion.vue'
-import Accessory from './Accessory.vue'
-import Digital from './Digital.vue'
-import Cart from './Cart.vue'
-import NotFound from './NotFound.vue'
+import { Home, Fashion, Accessory, Digital, NotFound, Product, Cart } from '../pages';
 
 export default createRouter({
-  // history: createWebHashHistory(),
   history: createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) return savedPosition
-    else return { top: 0 }
+    if (savedPosition) return savedPosition;
+    else return { top: 0 };
   },
 
   routes: [
@@ -47,7 +39,7 @@ export default createRouter({
     },
     {
       path: '/:pathMatch(.*)',
-      component: NotFound // 404 페이지
+      component: NotFound
     }
   ]
 })

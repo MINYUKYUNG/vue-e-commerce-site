@@ -1,33 +1,33 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useStore } from "vuex"
-import { proGuard } from '../store/goods'
+import { proGuard } from '@store/goods'
 
-let result = ref([])
-let reset = ref('')
+let result = ref([]);
+let reset = ref('');
 
 const store = useStore();
 
 const all = computed(() => {
-  return store.state.goods.all
-})
+  return store.state.goods.all;
+});
 
 const search = (e: Event) => {
   let input = (e.target as HTMLInputElement).value;
   if ((e.target as HTMLInputElement).value === '') {
-    reset.value = '',
-    result.value = []
+    reset.value = '';
+    result.value = [];
   } else if ((e.target as HTMLInputElement).value !== '') {
     result.value = all.value.filter((item: proGuard) => {
-      return item.title.toLowerCase().indexOf(input.toLowerCase()) > -1
+      return item.title.toLowerCase().indexOf(input.toLowerCase()) > -1;
     });
-  }
-}
+  };
+};
 
 const openClose = () => {
-  reset.value = '',
-  result.value = []
-}
+  reset.value = '';
+  result.value = [];
+};
 </script>
 
 <template>

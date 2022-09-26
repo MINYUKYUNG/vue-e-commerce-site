@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Carousel, Slide, Pagination } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
-import { ref } from 'vue'
-import jeans from '../assets/jeans.jpg'
-import necklace from '../assets/necklace.jpg'
-import salad from '../assets/salad.jpg'
+import { ref } from 'vue';
+import { jeans, necklace, salad } from '@assets/images/index';
 
 const images = ref([
   {
@@ -34,12 +32,10 @@ const images = ref([
       <RouterLink :to="image.to" style="height:100%; width: 100%;" class="relative">
         <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold absolute left-0 top-1/4 pl-20 lg:pl-44 2xl:pl-72">
           <span class="fontKnewave">{{ image.des }}</span>
-          <!-- <span class="text-base block text-left text-white font-normal py-1.5 pl-px">더 자세히 알아보기</span> -->
         </h2>
         <img :src="image.url" :alt="'캐러셀 이미지' + image.id" style="max-height: 700px; width: 100%; object-fit: cover;" />
       </RouterLink>
     </Slide>
-
     <template #addons>
       <Pagination />
     </template>
