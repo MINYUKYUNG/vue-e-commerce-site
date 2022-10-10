@@ -54,5 +54,6 @@ npm run dev
 | pages | url 주소 페이지 파일 폴더 |
 | routes | Vue 라우팅 파일 폴더 |
 | store | 전역상태관리 파일 폴더 |
+| utils | 중복 로직 함수를 순수 함수화한 파일 폴더 |
 
 
