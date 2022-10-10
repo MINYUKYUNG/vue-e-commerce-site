@@ -1,18 +1,16 @@
 import { Commit } from 'vuex';
-import { productsApi } from '../apis/goodsApi';
+import { productsApi, womenFashionsApi, menFashionsApi, electronicsApi, jeweleryApi } from '../apis/goodsApi';
+import { ProductGuard } from '../utils/type';
 
-export interface proGuard {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  category: string,
-  image: string,
-  rating: { rate: number, count: number}
+const PRE_HALF = 2;
+const PRE_NUMS = 4;
+
+type AllListsGuard = {
+  [key: string]: ProductGuard
 };
 
-interface stateGuard {
-  [key: string]: proGuard[]
+interface StateGuard {
+  [key: string]: ProductGuard[] | AllListsGuard
 };
 
 export default {
@@ -21,46 +19,113 @@ export default {
   state: () => {
     return {
       // Product.vue
-      all: [] as proGuard[],
-      // Fashion.vue // Accessory.vue // Digital.vue
-      fash: [] as proGuard[],
-      acce: [] as proGuard[],
-      digi: [] as proGuard[],
+      all: [],
+      allLists: {},
+      // Fashion.vue 
+      womenFash: [],
+      menFash: [],
+      // Digital.vue
+      elec: [],
+      // Accessory.vue 
+      jewe: [],
       // Preview.vue
-      preFash: [] as proGuard[],
-      preAcce: [] as proGuard[],
-      preDigi: [] as proGuard[]
+      preWomen: [],
+      preMen: [],
+      preElec: [],
+      preJewe: [],
     }
   },
 
   mutations: {
-    async setProducts(state: stateGuard, payload: { data: proGuard[]}) {
+    productLists(state: StateGuard, payload: { data: ProductGuard[] }) {
       const { data } = payload;
-      const preNums = 4;
-      
-      data.forEach(item => {
+      const allLists = {};
+      const all = data.map((item: ProductGuard) => {
         item.price = Math.round(item.price);
-        state.all = [...state.all, item];
-        if (item.category === "men's clothing" || item.category === "women's clothing")
-          state.fash = [...state.fash, item];
-        else if (item.category === "jewelery")
-          state.acce = [...state.acce, item];
-        else if (item.category === "electronics")
-          state.digi = [...state.digi, item];
+        allLists[item.id] = item;
+  
+        return item;
       });
-      state.preFash = state.fash.slice(0, preNums);
-      state.preAcce = state.acce.slice(0, preNums);
-      state.preDigi = state.digi.slice(0, preNums);
-    }
+
+      state.all = all;
+      state.allLists = allLists;
+    },
+    womenFashionLists(state: StateGuard, payload: { data: ProductGuard[] }) {
+      const { data } = payload;
+      const womenFash = data.map((item: ProductGuard) => {
+        item.price = Math.round(item.price);
+        return item;
+      });
+      const preWomen = womenFash.slice(0, PRE_HALF);
+
+      state.womenFash = womenFash;
+      state.preWomen = preWomen;
+    },
+    menFashionLists(state: StateGuard, payload: { data: ProductGuard[] }) {
+      const { data } = payload;
+      const menFash = data.map((item: ProductGuard) => {
+        item.price = Math.round(item.price);
+        return item;
+      });
+      const preMen = menFash.slice(0, PRE_HALF);
+  
+      state.menFash = menFash;
+      state.preMen = preMen;
+    },
+    electronicsLists(state: StateGuard, payload: { data: ProductGuard[] }) {
+      const { data } = payload;
+      const elec = data.map((item: ProductGuard) => {
+        item.price = Math.round(item.price);
+        return item;
+      });
+      const preElec = elec.slice(0, PRE_NUMS);
+
+      state.elec = elec;
+      state.preElec = preElec;
+    },
+    jeweleryLists(state: StateGuard, payload: { data: ProductGuard[] }) {
+      const { data } = payload;
+      const jewe = data.map((item: ProductGuard) => {
+        item.price = Math.round(item.price);
+        return item;
+      });
+      const preJewe = jewe.slice(0, PRE_NUMS);
+
+      state.jewe = jewe;
+      state.preJewe = preJewe;
+    },
   },
 
   actions: {
     async getProducts(context: { commit: Commit }) {
       const data = await productsApi();
-
-      context.commit('setProducts', {
+      context.commit('productLists', {
         data
       });
-    }
+    },
+    async getWomenFashion(context: { commit: Commit }) {
+      const data = await womenFashionsApi();
+      context.commit('womenFashionLists', {
+        data
+      });
+    },
+    async getMenFashion(context: { commit: Commit }) {
+      const data = await menFashionsApi();
+      context.commit('menFashionLists', {
+        data
+      });
+    },
+    async getElectronics(context: { commit: Commit }) {
+      const data = await electronicsApi();
+      context.commit('electronicsLists', {
+        data
+      });
+    },
+    async getJewelery(context: { commit: Commit }) {
+      const data = await jeweleryApi();
+      context.commit('jeweleryLists', {
+        data
+      });
+    },
   }
 };
