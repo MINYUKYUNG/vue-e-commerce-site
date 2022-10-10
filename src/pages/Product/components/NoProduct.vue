@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
 
-const route = useRoute()
-const paramsId = ref(route.params.id)
+const route = useRoute();
+const paramsId = ref(route.params.id);
 </script>
 
 <template>

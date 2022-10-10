@@ -7,13 +7,8 @@ let num = ref(0);
 
 const store = useStore();
 
-const all = computed(() => {
-  return store.state.goods.all;
-});
-
-const saveCart = computed(() => {
-  return store.state.cart.saveCart;
-});
+const allLists = computed(() => store.state.goods.allLists);
+const saveCart = computed(() => store.state.cart.saveCart);
 
 const emit = defineEmits(['repage']);
 const repage = () => {
@@ -22,13 +17,13 @@ const repage = () => {
 
 const plusCart = (value: number) => {
   store.commit('cart/updateCart', {
-    getParams: value,
+    id: value,
     num: 1
   });
 };
 const minusCart = (value: number) => {
   store.commit('cart/updateCart', {
-    getParams: value,
+    id: value,
     num: -1
   });
 };
@@ -43,21 +38,21 @@ const countCart = (value: number) => {
 
 const data = saveCart.value;
 for (const key in data) {
-  baseCart.value = [...baseCart.value, data[key]];
+  baseCart.value = [ ...baseCart.value, data[key] ];
 };
 </script>
 
 <template>
   <div>
     <div v-for="{ id } in baseCart" :key="id" class="card lg:card-side border-solid border border-gray-200 my-12">
-      <RouterLink :to="'/product/' + id" class="bg-white flex justify-center">
-        <figure class="bg-white h-56 w-56"><img :src="all[id-1].image" alt="상품 이미지" class="object-contain h-5/6 w-5/6" /></figure>
+      <RouterLink :to="'/products/' + id" class="bg-white flex justify-center">
+        <figure class="bg-white h-56 w-56"><img :src="allLists[id].image" alt="상품 이미지" class="object-contain h-5/6 w-5/6" /></figure>
       </RouterLink>
       <div class="card-body relative">
-        <RouterLink :to="'/product/' + id">
-          <h2 class="card-title">{{ all[id-1].title }}</h2>
+        <RouterLink :to="'/products/' + id">
+          <h2 class="card-title">{{ allLists[id].title }}</h2>
         </RouterLink>
-        <p :key="num" class="text-3xl">${{ all[id-1].price * saveCart[id].count }}</p>
+        <p :key="num" class="text-3xl">${{ allLists[id].price * saveCart[id].count }}</p>
         <div class="card-actions pt-4">
           <div class="btn-group">
             <button class="btn btn-primary" @click="minusCart(id), countCart(-1)"> - </button>
