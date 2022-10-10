@@ -2,9 +2,10 @@
 import { ref, computed, watch } from 'vue';
 import { useStore } from "vuex";
 import Search from './Search.vue';
+import { Storage } from '../utils/storage';
 
 const checked = ref(false);
-let numberCart = ref(0);
+const numberCart = ref(0);
 
 const store = useStore();
 
@@ -13,10 +14,10 @@ const saveCart = computed(() => {
 });
 
 const redIcon = () => {
-  let headerCart = JSON.parse(localStorage.getItem('cart_data') || '{}');
+  const headerCart = JSON.parse(Storage.get('cart_data') || '{}');
 
-  for (const key in {...headerCart}) {
-    numberCart.value = numberCart.value + {...headerCart}[key].count // typeof는 number
+  for (const key in headerCart) {
+    numberCart.value = numberCart.value + headerCart[key].count;
   };
 };
 
@@ -25,11 +26,11 @@ const lightDark = () => {
   if (checked.value === false) {
     documentEl.dataset.theme = 'light';
     documentEl.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
+    Storage.set('theme', 'light');
   } else if (checked.value === true) {
     documentEl.dataset.theme = 'dark';
     documentEl.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
+    Storage.set('theme', 'dark');
   };
 };
 
@@ -40,9 +41,9 @@ watch(saveCart, () => {
   redIcon();
 });
 
-if (localStorage.getItem('theme')) {
-  if (localStorage.getItem('theme') === 'dark') checked.value = true;
-  else if (localStorage.getItem('theme') === 'light') lightDark();
+if (Storage.get('theme')) {
+  if (Storage.get('theme') === 'dark') checked.value = true;
+  else if (Storage.get('theme') === 'light') lightDark();
 } else lightDark();
 redIcon();
 </script>

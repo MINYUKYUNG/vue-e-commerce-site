@@ -14,11 +14,11 @@ export default createRouter({
       component: Home
     },
     {
-      path: '/product',
+      path: '/products',
       component: Product
     },
     {
-      path: '/product/:id',
+      path: '/products/:id',
       component: Product
     },
     {

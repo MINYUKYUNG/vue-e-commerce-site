@@ -33,7 +33,7 @@ const images = ref([
         <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold absolute left-0 top-1/4 pl-20 lg:pl-44 2xl:pl-72">
           <span class="fontKnewave">{{ image.des }}</span>
         </h2>
-        <img :src="image.url" :alt="'캐러셀 이미지' + image.id" style="max-height: 700px; width: 100%; object-fit: cover;" />
+        <img :src="image.url" :alt="'캐러셀 이미지' + image.id" className="w-full object-cover" style="max-height: 700px;" />
       </RouterLink>
     </Slide>
     <template #addons>
