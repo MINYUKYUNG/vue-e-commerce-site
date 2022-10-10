@@ -27,5 +27,6 @@ module.exports = {
     'vue/html-indent': "off",
     'vue/no-v-for-template-key': "off",
     "@typescript-eslint/no-extra-semi": "off",
+    "no-useless-catch": "off"
   }
 }
