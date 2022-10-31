@@ -10,15 +10,15 @@ defineProps<CategoryGuard>();
 </script>
 
 <template>
-  <main class="pt-16">
-    <section class="container mx-auto px-4 2xl:px-20 w-full mt-10 mb-20">
+  <section class="pt-16">
+    <div class="container mx-auto px-4 2xl:px-20 w-full mt-10 mb-20">
       <div class="text-sm breadcrumbs">
         <ul>
           <li>홈</li> 
           <li>{{ subTitle }}</li>
         </ul>
       </div>
-      <section class="pt-12 pb-8 container mx-auto">
+      <div class="pt-12 pb-8 container mx-auto">
         <h2 class="pb-8 text-4xl font-bold text-center">{{ subTitle }}</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 w-full gap-6">
           <div 
@@ -34,7 +34,7 @@ defineProps<CategoryGuard>();
             </RouterLink>
           </div>
         </div>
-      </section>
-    </section>
-  </main>
+      </div>
+    </div>
+  </section>
 </template>
