@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from "vuex";
+import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import { computed, onMounted, ref } from 'vue';
 import YesProduct from './components/YesProduct.vue';

@@ -1,5 +1,11 @@
 import { Commit } from 'vuex';
-import { productsApi, womenFashionsApi, menFashionsApi, electronicsApi, jeweleryApi } from '../apis/goodsApi';
+import {
+  productsApi,
+  womenFashionsApi,
+  menFashionsApi,
+  electronicsApi,
+  jeweleryApi,
+} from '../apis/goodsApi';
 import { ProductGuard } from '../utils/type';
 
 const PRE_HALF = 2;
@@ -11,30 +17,28 @@ type AllListsGuard = {
 
 interface StateGuard {
   [key: string]: ProductGuard[] | AllListsGuard
-};
+}
 
 export default {
   namespaced: true,
-  
-  state: () => {
-    return {
-      // Product.vue
-      all: [],
-      allLists: {},
-      // Fashion.vue 
-      womenFash: [],
-      menFash: [],
-      // Digital.vue
-      elec: [],
-      // Accessory.vue 
-      jewe: [],
-      // Preview.vue
-      preWomen: [],
-      preMen: [],
-      preElec: [],
-      preJewe: [],
-    }
-  },
+
+  state: () => ({
+    // Product.vue
+    all: [],
+    allLists: {},
+    // Fashion.vue
+    womenFash: [],
+    menFash: [],
+    // Digital.vue
+    elec: [],
+    // Accessory.vue
+    jewe: [],
+    // Preview.vue
+    preWomen: [],
+    preMen: [],
+    preElec: [],
+    preJewe: [],
+  }),
 
   mutations: {
     productLists(state: StateGuard, payload: { data: ProductGuard[] }) {
@@ -43,7 +47,7 @@ export default {
       const all = data.map((item: ProductGuard) => {
         item.price = Math.round(item.price);
         allLists[item.id] = item;
-  
+
         return item;
       });
 
@@ -68,7 +72,7 @@ export default {
         return item;
       });
       const preMen = menFash.slice(0, PRE_HALF);
-  
+
       state.menFash = menFash;
       state.preMen = preMen;
     },
@@ -100,32 +104,32 @@ export default {
     async getProducts(context: { commit: Commit }) {
       const data = await productsApi();
       context.commit('productLists', {
-        data
+        data,
       });
     },
     async getWomenFashion(context: { commit: Commit }) {
       const data = await womenFashionsApi();
       context.commit('womenFashionLists', {
-        data
+        data,
       });
     },
     async getMenFashion(context: { commit: Commit }) {
       const data = await menFashionsApi();
       context.commit('menFashionLists', {
-        data
+        data,
       });
     },
     async getElectronics(context: { commit: Commit }) {
       const data = await electronicsApi();
       context.commit('electronicsLists', {
-        data
+        data,
       });
     },
     async getJewelery(context: { commit: Commit }) {
       const data = await jeweleryApi();
       context.commit('jeweleryLists', {
-        data
+        data,
       });
     },
-  }
+  },
 };

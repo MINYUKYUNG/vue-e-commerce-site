@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { useStore } from "vuex";
+import { useStore } from 'vuex';
 import Search from './Search.vue';
 import { Storage } from '../utils/storage';
 
@@ -9,16 +9,14 @@ const numberCart = ref(0);
 
 const store = useStore();
 
-const saveCart = computed(() => {
-  return store.state.cart.saveCart;
-});
+const saveCart = computed(() => store.state.cart.saveCart);
 
 const redIcon = () => {
   const headerCart = JSON.parse(Storage.get('cart_data') || '{}');
 
-  for (const key in headerCart) {
-    numberCart.value = numberCart.value + headerCart[key].count;
-  };
+  Object.keys(headerCart).forEach((key) => {
+    numberCart.value += headerCart[key].count;
+  });
 };
 
 const lightDark = () => {
@@ -31,7 +29,7 @@ const lightDark = () => {
     documentEl.dataset.theme = 'dark';
     documentEl.classList.add('dark');
     Storage.set('theme', 'dark');
-  };
+  }
 };
 
 watch(checked, lightDark);
@@ -57,12 +55,32 @@ redIcon();
         </label>
       </div>
       <div class="mx-2 flex-none">
-        <RouterLink to="/" class="text-lg font-bold text-gray-700 dark:text-white">Vue Shop</RouterLink>
+        <RouterLink
+          to="/"
+          class="text-lg font-bold text-gray-700 dark:text-white"
+        >
+          Vue Shop
+        </RouterLink>
       </div>
       <div class="hidden flex-none sm:flex md:flex-1">
-        <RouterLink to="/fashion" class="btn btn-ghost text-gray-700 content-center btn-sm dark:text-white">패션</RouterLink>
-        <RouterLink to="/accessory" class="btn btn-ghost text-gray-700 content-center btn-sm dark:text-white">액세서리</RouterLink>
-        <RouterLink to="/digital" class="btn btn-ghost text-gray-700 content-center btn-sm dark:text-white">디지털</RouterLink>
+        <RouterLink
+          to="/fashion"
+          class="btn btn-ghost text-gray-700 content-center btn-sm dark:text-white"
+        >
+          패션
+        </RouterLink>
+        <RouterLink
+          to="/accessory"
+          class="btn btn-ghost text-gray-700 content-center btn-sm dark:text-white"
+        >
+          액세서리
+        </RouterLink>
+        <RouterLink
+          to="/digital"
+          class="btn btn-ghost text-gray-700 content-center btn-sm dark:text-white"
+        >
+          디지털
+        </RouterLink>
       </div>
       <div class="flex items-center">
         <label class="swap swap-rotate">
@@ -73,7 +91,12 @@ redIcon();
         <Search />
         <RouterLink to="/cart" class="btn btn-ghost text-gray-700 content-center relative">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 stroke-gray-700 dark:stroke-white" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-          <span class="bg-red-500 text-gray-200 w-5 h-5 text-center leading-5 rounded-full text-xs absolute top-0 left-2/4">{{ numberCart }}</span>
+          <span
+            class="bg-red-500 text-gray-200 w-5 h-5 text-center leading-5 rounded-full
+            text-xs absolute top-0 left-2/4"
+          >
+            {{ numberCart }}
+          </span>
         </RouterLink>
       </div>
     </div>

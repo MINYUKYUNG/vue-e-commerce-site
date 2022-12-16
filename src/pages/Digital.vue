@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { useStore } from "vuex";
+import { useStore } from 'vuex';
 import Category from '../components/Category.vue';
 
 const store = useStore();
@@ -16,7 +16,7 @@ const isState = computed(() => {
 
   const info = {
     data: elec.value,
-    subTitle: "디지털",
+    subTitle: '디지털',
   };
 
   return info;

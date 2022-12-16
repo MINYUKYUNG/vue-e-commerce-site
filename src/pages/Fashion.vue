@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { useStore } from "vuex";
+import { useStore } from 'vuex';
 import Category from '../components/Category.vue';
 
 const store = useStore();
@@ -17,8 +17,8 @@ const isState = computed(() => {
   const menFash = computed(() => store.state.goods.menFash);
 
   const info = {
-    data: [ ...womenFash.value, ...menFash.value ],
-    subTitle: "패션",
+    data: [...womenFash.value, ...menFash.value],
+    subTitle: '패션',
   };
 
   return info;

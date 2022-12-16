@@ -4,16 +4,14 @@ import { ProductGuard } from '../utils/type';
 
 interface StateGuard {
   [key: string]: ProductGuard
-};
+}
 
 export default {
   namespaced: true,
-  
-  state: () => {
-    return {
-      single: {}
-    }
-  },
+
+  state: () => ({
+    single: {},
+  }),
 
   mutations: {
     singleProduct(state: StateGuard, payload: { data: ProductGuard }) {
@@ -28,10 +26,10 @@ export default {
       if (data !== '') data.price = Math.round(data.price);
 
       context.commit('singleProduct', {
-        data
+        data,
       });
 
       return data;
     },
-  }
+  },
 };

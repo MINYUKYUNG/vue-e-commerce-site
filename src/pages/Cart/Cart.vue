@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from "vuex";
+import { useStore } from 'vuex';
 import { ref, computed } from 'vue';
 import YesCart from './components/YesCart.vue';
 import { productsApi } from '../../apis/goodsApi';
@@ -19,21 +19,22 @@ const deleteCart = () => {
 };
 
 const reYesCart = () => {
-  reLoad.value = reLoad.value + 1;
+  reLoad.value += 1;
 };
 
 const toPr = () => {
   const allLists = computed(() => store.state.goods.allLists);
-  const saveCart = computed(() => store.state.cart.saveCart);
 
-  let newData = saveCart.value;
-  let newId = 0, newCount = 0, newTotalPrice = 0;
+  const newData = saveCart.value;
+  let newId = 0;
+  let newCount = 0;
+  let newTotalPrice = 0;
 
-  for (const key in newData) {
+  Object.keys(newData).forEach((key) => {
     newCount = newData[key].count;
     newId = newData[key].id;
-    newTotalPrice = newTotalPrice + (allLists.value[newId].price * newCount);
-  };
+    newTotalPrice += (allLists.value[newId].price * newCount);
+  });
 
   return newTotalPrice;
 };
@@ -44,7 +45,7 @@ const toPr = () => {
     <section class="container mx-auto px-4 2xl:px-20 w-full mt-10 mb-20">
       <div class="text-sm breadcrumbs">
         <ul>
-          <li>홈</li> 
+          <li>홈</li>
           <li>장바구니</li>
         </ul>
       </div>

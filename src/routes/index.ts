@@ -1,45 +1,54 @@
-import { createRouter, createWebHistory } from "vue-router";
-import { Home, Fashion, Accessory, Digital, NotFound, Product, Cart } from '../pages';
+import { createRouter, createWebHistory } from 'vue-router';
+import {
+  Home,
+  Fashion,
+  Accessory,
+  Digital,
+  NotFound,
+  Product,
+  Cart,
+} from '../pages';
 
 export default createRouter({
   history: createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;
-    else return { top: 0 };
+
+    return { top: 0 };
   },
 
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
     },
     {
       path: '/products',
-      component: Product
+      component: Product,
     },
     {
       path: '/products/:id',
-      component: Product
+      component: Product,
     },
     {
       path: '/fashion',
-      component: Fashion
+      component: Fashion,
     },
     {
       path: '/accessory',
-      component: Accessory
+      component: Accessory,
     },
     {
       path: '/digital',
-      component: Digital
+      component: Digital,
     },
     {
       path: '/cart',
-      component: Cart
+      component: Cart,
     },
     {
       path: '/:pathMatch(.*)',
-      component: NotFound
-    }
-  ]
-})
+      component: NotFound,
+    },
+  ],
+});
