@@ -23,17 +23,12 @@ export default {
   namespaced: true,
 
   state: () => ({
-    // Product.vue
     all: [],
     allLists: {},
-    // Fashion.vue
     womenFash: [],
     menFash: [],
-    // Digital.vue
     elec: [],
-    // Accessory.vue
     jewe: [],
-    // Preview.vue
     preWomen: [],
     preMen: [],
     preElec: [],
