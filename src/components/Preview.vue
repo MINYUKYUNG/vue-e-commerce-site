@@ -42,7 +42,7 @@ const isState = computed(() => {
           <div
             v-for="{ id, title, price, image } in data" :key="id"
             class="card card-compact bg-gray-100 grid flex-grow dark:bg-gray-700 cursor-pointer
-            border-solid border border-gray-200 dark:border-none"
+            border-solid border border-gray-200 dark:border-none overflow-hidden"
           >
             <RouterLink :to="'/products/' + id">
               <figure class="bg-white overflow-hidden h-80">

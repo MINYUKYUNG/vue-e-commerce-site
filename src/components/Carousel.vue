@@ -56,7 +56,9 @@ const images = ref([
   overflow: hidden;
   width: 100%;
 }
-.carousel__pagination > .carousel__pagination-item > .carousel__pagination-button {
+.carousel__pagination > .carousel__pagination-item > .carousel__pagination-button::after {
   width: 30px;
+  height: 5px;
+  border-radius: 5px;
 }
 </style>
