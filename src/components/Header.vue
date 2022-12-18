@@ -59,7 +59,7 @@ redIcon();
           to="/"
           class="text-lg font-bold text-gray-700 dark:text-white"
         >
-          Vue Shop
+          MMM
         </RouterLink>
       </div>
       <div class="hidden flex-none sm:flex md:flex-1">
